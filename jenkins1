@@ -44,7 +44,7 @@ pipeline {
         }
         stage('package the code'){
 //use of when statement
-        when expression {env.GIT_BRANCH == 'origin/master'}}
+        when{ expression {env.GIT_BRANCH == 'origin/master'}}
             steps{
             echo "package the code"
             sh "mvn ${goalpackage}"
