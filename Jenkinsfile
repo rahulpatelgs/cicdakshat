@@ -31,7 +31,7 @@ pipeline {
             steps{
                 script{
                     def kubepodrm = 'sudo kubectl delete pod spring-boot-k8s-deployment || true'
-                    def kubeCmd = 'sudo kubectl apply deploymentservice.yaml'
+                    def kubeCmd = 'sudo kubectl apply -f deploymentservice.yaml'
                     sshagent(['sshkeykube8s']) {
                         //sh "docker rm -f My-first-containe-1"
                         //chnage the private ip in below code
