@@ -33,16 +33,8 @@ pipeline {
                     def kubepodrm = 'sudo kubectl delete pod spring-boot-k8s-deployment || true'
                     def kubeCmd = 'sudo kubectl apply -f deploymentservice.yaml'
                     sshagent(['sshkeykube8s']) {
-                        //sh "docker rm -f My-first-containe-1"
-                        //chnage the private ip in below code
-                        // sh "docker run -itd --name My-first-containe211 -p 8082:80 $JOB_NAME:v1.BUILD_ID"
                          sh "ssh -o StrictHostKeyChecking=no ubuntu@3.108.44.45 ${kubepodrm}"
-                         sh "ssh -o StrictHostKeyChecking=no ubuntu@3.108.44.45 ${kubeCmd}"
-                   //kubernetesDeploy configs: 'deploymentservice.yaml', kubeConfig: [path: ''], 
-                    //kubeconfigId: 'k8sconfigpwd', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''],
-                    //textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
-                    //kubernetesDeploy (configs: 'deploymentservice.yaml' ,kubeconfigId: 'k8sconfigpwd')
-                   
+                         sh "ssh -o StrictHostKeyChecking=no ubuntu@3.108.44.45 ${kubeCmd}"  
                 }
             }
         }
