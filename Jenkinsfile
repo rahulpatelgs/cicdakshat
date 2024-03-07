@@ -30,10 +30,10 @@ pipeline {
         stage('Deploy to k8s'){
             steps{
                 script{
-                    def kubepodrm = 'sudo kubectl delete pod spring-boot-k8s-deployment || true'
+                    //def kubepodrm = 'sudo kubectl delete pod spring-boot-k8s-deployment || true'
                     def kubeCmd = 'sudo kubectl apply -f deploymentservice.yaml'
                     sshagent(['sshkeykube8s']) {
-                         sh "ssh -o StrictHostKeyChecking=no ubuntu@3.108.44.45 ${kubepodrm}"
+                        //sh "ssh -o StrictHostKeyChecking=no ubuntu@3.108.44.45 ${kubepodrm}"
                          sh "ssh -o StrictHostKeyChecking=no ubuntu@3.108.44.45 ${kubeCmd}"  
                 }
             }
