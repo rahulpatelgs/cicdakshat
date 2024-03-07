@@ -19,10 +19,10 @@ pipeline {
         }
           stage('Docker login') {
             steps {
-               //withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-              //sh "echo $PASS | docker login -u $USER --password-stdin"
-              //sh 'docker push rahulpatel123/$JOB_NAME:v1.$BUILD_ID'
-                     //sh 'docker push rahulpatel123/$JOB_NAME:latest'
+               withCredentials([usernamePassword(credentialsId: 'dockerhub-pwd', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+              sh "echo $PASS | docker login -u $USER --password-stdin"
+              sh 'docker push rahulpatel123/$JOB_NAME:v1.$BUILD_ID'
+                     sh 'docker push rahulpatel123/$JOB_NAME:latest'
                 }
             }
         }
